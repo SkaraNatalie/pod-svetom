@@ -1,20 +1,28 @@
-const slides = document.querySelectorAll(".slide");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+// 1. Находим абсолютно все блоки каруселей на странице
+const carousels = document.querySelectorAll(".carousel");
 
-let currentIndex = 0;
+// 2. Перебираем каждую карусель отдельно
+carousels.forEach((carousel) => {
+  // Находим элементы конкретно внутри ЭТОЙ текущей карусели
+  const slides = carousel.querySelectorAll(".slide");
+  const prevBtn = carousel.querySelector(".prev");
+  const nextBtn = carousel.querySelector(".next");
 
-function changeSlide(index) {
-  // Удаляем класс active у текущего слайда
-  slides[currentIndex].classList.remove("active");
+  // У каждой карусели будет свой собственный независимый счетчик слайдов
+  let currentIndex = 0;
 
-  // Обновляем индекс (если вышли за пределы 0 или 1, возвращаем в начало/конец)
-  currentIndex = (index + slides.length) % slides.length;
+  function changeSlide(index) {
+    // Удаляем активный класс у текущего слайда этой карусели
+    slides[currentIndex].classList.remove("active");
 
-  // Добавляем класс active новому слайду
-  slides[currentIndex].classList.add("active");
-}
+    // Зацикливаем индекс в зависимости от количества слайдов в этой карусели
+    currentIndex = (index + slides.length) % slides.length;
 
-// События для кнопок
-nextBtn.addEventListener("click", () => changeSlide(currentIndex + 1));
-prevBtn.addEventListener("click", () => changeSlide(currentIndex - 1));
+    // Добавляем активный класс новому слайду
+    slides[currentIndex].classList.add("active");
+  }
+
+  // Навешиваем события на кнопки именно этой карусели
+  nextBtn.addEventListener("click", () => changeSlide(currentIndex + 1));
+  prevBtn.addEventListener("click", () => changeSlide(currentIndex - 1));
+});
