@@ -17,7 +17,7 @@
 
 /* Базовые стили */
 body {
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
 }
@@ -26,7 +26,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Open Sans", sans-serif;
   color: var(--dark-color);
   line-height: 1.2;
 }
@@ -107,27 +107,44 @@ img {
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Картинка сжимается или увеличивается, чтобы влезть целиком */
-  object-position: center; /* Центрирует картинку внутри слайда */
+  object-fit: contain; /* Или contain, если вам по-прежнему важно не обрезать края */
+  object-position: center;
+}
+
+@media (max-width: 576px) {
+  /* Если у вас тут есть другие стили для .carousel, оставьте их */
+
+  .btn {
+    padding: 6px 10px; /* Максимально компактные отступы */
+    font-size: 12px; /* Маленький аккуратный размер стрелочки */
+  }
 }
 
 /* Стили кнопок */
-.btn {
+.btn1 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* Чуть более прозрачный фон, чтобы не давил */
   color: white;
   border: none;
-  padding: 15px 20px;
+
+  /* Уменьшенные размеры */
+  padding: 10px 12px; /* Было 15px 20px */
+  font-size: 12px; /* Было 18px */
+
   cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
+  border-radius: 4px;
   z-index: 10;
   transition: background 0.3s;
 }
 
-.btn:hover {
+.btn1:hover {
   background: rgba(0, 0, 0, 0.8);
 }
 
@@ -157,7 +174,7 @@ img {
 }
 
 .nav-brand {
-  font-family: "Playfair Display", serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
