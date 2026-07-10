@@ -58,7 +58,7 @@ img {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 1rem;
-  color: var(--dark-color);
+  color: var(--light-color);
 }
 
 .section-subtitle {
@@ -247,17 +247,18 @@ img {
 /* О нас */
 .about {
   padding: 100px 0;
-  background: white;
+  background: #43382d;
 }
 
 .about-text p {
   margin-bottom: 1.5rem;
+  color: white;
 }
 
 /* Меню */
 .menu {
   padding: 80px 0;
-  background: var(--light-color);
+  background: #43382d;
 }
 
 .menu-grid {
